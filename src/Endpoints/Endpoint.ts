@@ -58,36 +58,12 @@ export abstract class Endpoint extends Cache {
     return this._endpoint;
   }
 
-  public async table(...args: string[]) {
-    await this.load(...args);
+  public async table<T>(
+    headings: string[] = this.tableKeys(),
+    each: (index: number, element: CheerioElement) => T
+  ) {
     const { $ } = this;
-    const keys = this.tableKeys();
-    const table = $("#e tbody tr")
-      .map((idx, el) => {
-        let obj: any = {};
-        const stats = $(el)
-          .find("td")
-          .each((idx, el) => {
-            const key = keys[idx];
-            switch (key) {
-              case "equipment":
-                obj[key] = $(el)
-                  .find(".item")
-                  .map((idx, el) => {
-                    return $(el).attr("title");
-                  })
-                  .get();
-                break;
-
-              default:
-                obj[key] = $(el).text();
-                break;
-            }
-          })
-          .get();
-        return obj;
-      })
-      .get();
+    const table: T[] = $("#e tbody tr").map(each).get();
     return table;
   }
 }

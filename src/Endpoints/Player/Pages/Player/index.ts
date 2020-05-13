@@ -51,6 +51,6 @@ export class PlayerPage extends PlayerEndpoint {
   }
 
   public async characters() {
-    return super.table(this.path, this.name);
+    // return super.table(this.path, this.name);
   }
 }

@@ -7,15 +7,17 @@ async function main() {
     }).ready();
     // console.log(await player.player.description());
     // console.log(await player.player.stats());
-    const skins = await player.skins.skins();
-    console.log(Object.keys(skins));
+    // const skins = await player.skins.skins();
+    // console.log(Object.keys(skins));
+    const graveyard = await player.graveyard.deaths();
+    console.log(graveyard);
 
-    console.log(
-      Object.keys(skins).map((key) => {
-        //@ts-ignore
-        return skins[key].filter((skin) => skin.unlocked).length;
-      })
-    );
+    // console.log(
+    //   Object.keys(skins).map((key) => {
+    //     //@ts-ignore
+    //     return skins[key].filter((skin) => skin.unlocked).length;
+    //   })
+    // );
 
     // console.log(await player.stats());
     // const player = await new PlayerPage({
