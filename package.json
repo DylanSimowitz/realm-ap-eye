@@ -2,11 +2,13 @@
   "name": "realm-ap-eye",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ts-node src/__test__",
+    "build": "tsc",
     "start": "ts-node src"
   },
+  "types": "build/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DylanSimowitz/realm-ap-eye.git"
@@ -23,10 +25,14 @@
     "@types/cheerio": "^0.22.18",
     "@types/node": "^13.13.4",
     "@types/node-fetch": "^2.5.7",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "eslint": "^7.0.0",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@hokify/node-ts-cache": "^5.1.4",
     "camelcase": "^6.0.0",
     "cheerio": "^1.0.0-rc.3",
     "node-fetch": "^2.6.0"

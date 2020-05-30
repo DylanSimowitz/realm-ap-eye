@@ -27,9 +27,4 @@ export class Player {
   public get graveyard(): PlayerGraveyardPage {
     return this.pages.graveyard;
   }
-
-  public async ready() {
-    await this.pages.player.ready();
-    return this;
-  }
 }

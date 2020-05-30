@@ -50,7 +50,7 @@ export class PlayerSkinsPage extends PlayerEndpoint {
     super({ ...parameters, path: "character-skins-of" });
   }
   public async skins(): Promise<Skins> {
-    await this.load(this.path, this.name);
+    await this.load();
     const { $ } = this;
     return PlayerSkinsHelper.all($);
   }

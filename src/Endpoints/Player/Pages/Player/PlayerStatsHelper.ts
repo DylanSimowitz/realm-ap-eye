@@ -1,16 +1,21 @@
 export class PlayerStatsHelper {
   private static selectors = {
-    characters: "table.summary tr:nth-child(1) td:last-of-type",
-    skins: "table.summary tr:nth-child(2) td:last-of-type .numeric",
-    fame: "table.summary tr:nth-child(3) td:last-of-type .numeric",
-    exp: "table.summary tr:nth-child(4) td:last-of-type .numeric",
-    rank: "table.summary tr:nth-child(5) td:last-of-type",
-    accountFame: "table.summary tr:nth-child(6) td:last-of-type .numeric",
-    guild: "table.summary tr:nth-child(7) td:last-of-type",
-    guildRank: "table.summary tr:nth-child(8) td:last-of-type",
-    created: "table.summary tr:nth-child(9) td:last-of-type",
-    lastSeen: "table.summary tr:nth-child(10) td:last-of-type .timeago",
+    player: "span.entity-name",
+    characters: "table.summary tr:contains(Characters) td:last-of-type",
+    skins: "table.summary tr:contains(Skins) td:last-of-type .numeric",
+    fame: "table.summary tr:contains(Fame) td:last-of-type .numeric",
+    exp: "table.summary tr:contains(Exp) td:last-of-type .numeric",
+    rank: "table.summary tr:contains(Rank) td:last-of-type",
+    accountFame:
+      "table.summary tr:contains(Account fame) td:last-of-type .numeric",
+    guild: "table.summary tr:contains(Guild)",
+    guildRank: "table.summary tr:contains(Guild Rank) td:last-of-type",
+    created: "table.summary tr:contains(Created) td:last-of-type",
+    lastSeen: "table.summary tr:contains(Last seen) td:last-of-type .timeago",
   };
+  static player($: CheerioStatic) {
+    return $(this.selectors.player).text();
+  }
   static characters($: CheerioStatic) {
     return Number($(this.selectors.characters).text());
   }
@@ -30,7 +35,7 @@ export class PlayerStatsHelper {
     return Number($(this.selectors.accountFame).text());
   }
   static guild($: CheerioStatic) {
-    return $(this.selectors.guild).text();
+    return $(this.selectors.guild).first().find("td:last-of-type").text();
   }
   static guildRank($: CheerioStatic) {
     return $(this.selectors.guildRank).text();

@@ -32,10 +32,9 @@ export class PlayerEndpoint extends Endpoint {
     this.path = path;
   }
 
-  public async ready() {
-    await this.load(this.path, this.name);
+  public async load() {
+    await super.load(this.path, this.name);
     const { $ } = this;
     if ($(".player-not-found").length) throw new Error("Player not found");
-    return this;
   }
 }
